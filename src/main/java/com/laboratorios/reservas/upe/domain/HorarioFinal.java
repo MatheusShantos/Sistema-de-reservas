@@ -1,38 +1,29 @@
 package com.laboratorios.reservas.upe.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class Local implements Serializable{
+public class HorarioFinal implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	private String nome;
-	private String descricao;
+	private String horaFinal;
+	private String status;
 	
-	@JsonManagedReference
-	@OneToMany(mappedBy="local")
-	private List<Reserva> reservas = new ArrayList<>();
-	
-	public Local() {}
+	public HorarioFinal() {}
 
-	public Local(Integer id, String nome, String descricao) {
+	public HorarioFinal(Integer id, String horaFinal, String status) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.descricao = descricao;
+		this.horaFinal = horaFinal;
+		this.status = status;
 	}
 
 	public Integer getId() {
@@ -43,28 +34,20 @@ public class Local implements Serializable{
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getHoraFinal() {
+		return horaFinal;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setHoraFinal(String horaFinal) {
+		this.horaFinal = horaFinal;
 	}
 	
-	public List<Reserva> getReservas() {
-		return reservas;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setReservas(List<Reserva> reservas) {
-		this.reservas = reservas;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override
@@ -83,7 +66,7 @@ public class Local implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Local other = (Local) obj;
+		HorarioFinal other = (HorarioFinal) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -91,5 +74,5 @@ public class Local implements Serializable{
 			return false;
 		return true;
 	}
-	
+
 }

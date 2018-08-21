@@ -5,19 +5,19 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.laboratorios.reservas.upe.domain.Local;
-import com.laboratorios.reservas.upe.repositories.LocalRepository;
+import com.laboratorios.reservas.upe.domain.Usuario;
+import com.laboratorios.reservas.upe.repositories.UsuarioRepository;
 import com.laboratorios.reservas.upe.services.exceptions.ObjectNotFoundException;
 
 @Service
-public class LocalService {
+public class UsuarioService {
 
 	@Autowired
-	private LocalRepository repo;
+	private UsuarioRepository repo;
 	
-	public Local find(Integer id) {
-		Optional<Local> obj = repo.findById(id);
+	public Usuario find(Integer id) {
+		Optional<Usuario> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-		"Objeto não encontrado! Id: " + id + ", Tipo: " + Local.class.getName()));
+		"Objeto não encontrado! Id: " + id + ", Tipo: " + Usuario.class.getName()));
 		}
 }
